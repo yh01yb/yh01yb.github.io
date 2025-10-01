@@ -1,0 +1,274 @@
+
+
+<!-- welcome to my home -->
+
+<!-- made with <3 -->
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<link rel="icon" type="image/x-icon" href="">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>༚✧˳⁺⁎☆⁎⁺˳✧༚</title>
+<link href="unnamed.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+<!--
+body {
+	background-color: #000000;
+	background-image: url("p1/MhGmePP.gif");
+
+}
+.style1 {font-size: 18px}
+.style3 {color: #FFFFFF}
+.style5 {
+	font-size: 18px;
+	font-weight: bold;
+}
+.SHOUT {background-color: #ff000d}
+-->
+</style>
+<script language="JavaScript" type="text/JavaScript">
+<!--
+function MM_reloadPage(init) {  //reloads the window if Nav4 resized
+  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
+    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
+  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
+}
+MM_reloadPage(true);
+//-->
+</script>
+</head>
+
+<body>
+
+  <script>
+// sparkle settings
+var colour="#FFFFFF"; // color of sparkles
+var sparkles=120;     // number of sparkles
+
+var x=ox=400;
+var y=oy=300;
+var swide=800;
+var shigh=600;
+var sleft=sdown=0;
+var tiny=[], star=[], starv=[], starx=[], stary=[], tinyx=[], tinyy=[], tinyv=[];
+
+window.onload=function() {
+  if (document.getElementById) {
+    for (var i=0; i<sparkles; i++) {
+      var rats=createDiv(3,3);
+      rats.style.visibility="hidden";
+      document.body.appendChild(tiny[i]=rats);
+      starv[i]=0;
+      tinyv[i]=0;
+      var rats=createDiv(5,5);
+      rats.style.backgroundColor="transparent";
+      rats.style.visibility="hidden";
+      var rlef=createDiv(1,5);
+      var rdow=createDiv(5,1);
+      rats.appendChild(rlef);
+      rats.appendChild(rdow);
+      rlef.style.top="2px"; rlef.style.left="0px";
+      rdow.style.top="0px"; rdow.style.left="2px";
+      document.body.appendChild(star[i]=rats);
+    }
+    set_width();
+    sparkle();
+  }
+}
+
+function sparkle() {
+  if (x!=ox || y!=oy) {
+    ox=x; oy=y;
+    for (var c=0; c<sparkles; c++) if (!starv[c]) {
+      star[c].style.left=(starx[c]=x)+"px";
+      star[c].style.top=(stary[c]=y)+"px";
+      star[c].style.clip="rect(0px,5px,5px,0px)";
+      star[c].style.visibility="visible";
+      starv[c]=50;
+      break;
+    }
+  }
+  for (var c=0; c<sparkles; c++) {
+    if (starv[c]) update_star(c);
+    if (tinyv[c]) update_tiny(c);
+  }
+  setTimeout(sparkle, 40);
+}
+
+function update_star(i) {
+  if (--starv[i]==25) star[i].style.clip="rect(1px,4px,4px,1px)";
+  if (starv[i]) {
+    stary[i]+=1+Math.random()*3;
+    if (stary[i]<shigh+sdown) {
+      star[i].style.top=stary[i]+"px";
+      starx[i]+=(i%5-2)/5;
+      star[i].style.left=starx[i]+"px";
+    } else {
+      star[i].style.visibility="hidden";
+      starv[i]=0;
+      return;
+    }
+  } else {
+    tinyv[i]=50;
+    tiny[i].style.top=(tinyy[i]=stary[i])+"px";
+    tiny[i].style.left=(tinyx[i]=starx[i])+"px";
+    tiny[i].style.width="2px"; tiny[i].style.height="2px";
+    star[i].style.visibility="hidden";
+    tiny[i].style.visibility="visible";
+  }
+}
+
+function update_tiny(i) {
+  if (--tinyv[i]==25) {
+    tiny[i].style.width="1px"; tiny[i].style.height="1px";
+  }
+  if (tinyv[i]) {
+    tinyy[i]+=1+Math.random()*3;
+    if (tinyy[i]<shigh+sdown) {
+      tiny[i].style.top=tinyy[i]+"px";
+      tinyx[i]+=(i%5-2)/5;
+      tiny[i].style.left=tinyx[i]+"px";
+    } else {
+      tiny[i].style.visibility="hidden"; tinyv[i]=0;
+    }
+  } else tiny[i].style.visibility="hidden";
+}
+
+document.onmousemove=function(e) {
+  set_scroll();
+  y=(e)?e.pageY:event.y+sdown;
+  x=(e)?e.pageX:event.x+sleft;
+}
+
+function set_scroll() {
+  if (typeof(self.pageYOffset)=="number") {
+    sdown=self.pageYOffset; sleft=self.pageXOffset;
+  } else if (document.body.scrollTop || document.body.scrollLeft) {
+    sdown=document.body.scrollTop; sleft=document.body.scrollLeft;
+  } else if (document.documentElement && (document.documentElement.scrollTop || document.documentElement.scrollLeft)) {
+    sleft=document.documentElement.scrollLeft; sdown=document.documentElement.scrollTop;
+  } else { sdown=0; sleft=0; }
+}
+
+window.onresize=set_width;
+function set_width() {
+  if (typeof(self.innerWidth)=="number") {
+    swide=self.innerWidth; shigh=self.innerHeight;
+  } else if (document.documentElement && document.documentElement.clientWidth) {
+    swide=document.documentElement.clientWidth; shigh=document.documentElement.clientHeight;
+  } else if (document.body.clientWidth) {
+    swide=document.body.clientWidth; shigh=document.body.clientHeight;
+  }
+}
+
+function createDiv(h, w) {
+  var d=document.createElement("div");
+  d.style.position="absolute";
+  d.style.height=h+"px";
+  d.style.width=w+"px";
+  d.style.overflow="hidden";
+  d.style.backgroundColor=colour;
+  return d;
+}
+</script>
+
+  <style>*{cursor: url('p1/lugiacursorimg.gif'), auto;}</style>
+
+<div class="unnamed1">
+  <div align="center">
+    <div align="center">
+      <table width="1116" border="0">
+        <tr>
+          <!-- <td width="135" height="101"><div align="center"><a href=""><img src="" width="" height="" border="0"></a></div></td> -->
+          <td width="824"><div align="center"><img src="Screenshot 2025-09-24 225949.png" width="524" height="99"></div></td>
+          <!-- <td width="135"><a href=""><img src="" width="" height="" border="0"></a></td> -->
+        </tr>
+      </table>
+            <p class="SHOUT"><a href=""></a></p>
+
+    </div>
+    <div align="center">
+      <table width="1315" border="0">
+        <tr>
+          <td width="158" rowspan="2"><div id="Layer2"><a href="https://codeforces.com/"><img src="codeforces_logo.png" width="156" height="152" border="0"></a><a href="https://www.4chan.org/"><img src="4chan_logo.png.webp" width="156" height="146" border="0"></a><a href="https://www.redbubble.com/i/t-shirt/Kali-Linux-Meme-by-jakkG0d/73935912.FB110"><img src="kaliii.png" width="158" height="160" border="0"></a><a href="https://nothing.community/"><img src="images.png" width="158" height="145" border="0"></a><a href="https://open.spotify.com/playlist/37i9dQZF1DX48OvCv93avz"><img src="Screenshot 2025-09-24 150443.png" width="158" height="158" border="0"></a></div></td>
+          <td width="893" rowspan="2"><table width="888" border="1">
+            <tr>
+              <td width="78" rowspan="5" class="unnamed2 style1"><div align="center">
+                  <p><a href="" class="style3">Sign My Guestbook (soon!)</a></p>
+                  <p>&nbsp;</p>
+                  <p><a href="https://www.youtube.com/@basiljjjjj" class="style3">My Youtube Channel</a></p>
+                  <p>&nbsp;</p>
+                  <p><a href="https://github.com/yh01yb" class="style3">My GitHub</a></p>
+                  <p>&nbsp;</p>
+                  <p><a href="https://spacehey.com/profile?id=4233484" class="style3">My MySpace</a></p>
+                  <p>&nbsp;</p>
+                  <p><a href="" class="style3">Broken Link</a></p>
+                  <p>&nbsp;</p>
+                  <p><a href="https://codeforces.com/profile/kingofclubs" class="style3">My Codeforces</a></p>
+                  <p>&nbsp;</p>
+                  <p><a href="https://ko-fi.com/fuljhadi"><img src="Screenshot 2025-09-24 145958.png" width="73" height="103" border="0"></a></p>
+              </div></td>
+              <td height="135" class="unnamed3"><p class="style5"><u>ABOUT ME:<span class="style1"></span></u></p>
+                  <p class="style1">Welcome to my abyssal void of a website that features mostly pixels and old web content. <span class="style5"></span><span class="style5"><u><u><img src="t111.jpg" width="210" height="140" align="right" class="floatright"></u></u></span> <span class="style5"></span><span class="style5"><u></u></span><br>This site is my side project where I share things with the world.<span class="style5"><u></u></span><span class="style5"></span> <span class="style5"></span>As an electronics student, I have a keen interest in machines and their uses. <br> Also softwares. Btw, I can do whatever you need, as long as I’m learning something or being paid fairly for my time — preferably both. <a href="mailto:adityalikesmath@gmail.com">MAIL me.</a> <span class="style5"></span>Do note that this site is a constant work in progress.<br> ENJOY YOUR VISIT, I GUESS.</p></td>
+            </tr>
+            <tr>
+              <td class="unnamed3"><a href="https://xdaforums.com/"><img src="Screenshot 2025-09-20 153907.png" width="468" height="60" border="0" class="floatleft"></a><a href=""><img src="under-construction.gif" width="303" height="60" border="0" class="floatright"></a></td>
+            </tr>
+            <tr>
+              <td class="unnamed3"><p class="style1"><u><strong>WHAT DO I DO?</strong></u></p>
+                  <p><span class="style1">There's this girl I really like, but she got together with someone else. Now, I just read -- <br> Ayn Rand and code all day... ><<a href="https://web.archive.org/web/20070407160023/http://www.amazon.com/b?ie=UTF8&node=3023481"><img src="oasis.gif" style="margin: 10px;" width="468" height="60" border="0" align="right"></a><br><br> ...I wonder when it will rain. </span><span class="style1"></span></p></td>
+            </tr>
+            <tr>
+              <td class="unnamed3"><p><a href=""><img src="Screenshot 2025-09-02 025107.png" width="380" height="70" border="0" class="floatleft"></a><a href="https://www.reddit.com/"><img src="Reddit_Logo_Alternative_17.png" width="380" height="60" border="0" class="floatright"></a></p></td>
+            </tr>
+            <tr>
+              <td width="794" height="237" class="unnamed3"><p><u><strong><span class="style1">MY FAVORITE THINGS </span></strong></u></p>
+                  <p><span class="style1"><strong style="font-weight: 500;";">"No one stopped you from turning back, You brought this upon yourself". Looking at the path ahead, Your courage only decreases. Turning back seems to be the obvious option. I like demotivation.</strong> BAHAHA? I don't really have many goals in life, <a href="https://demon-slayer-wiki.vercel.app/wiki/Koyuki"><img src="kakaza.jpg" width="170" height="126" border="0" align="right"></a> but when I have my eye on something you bet I will accomplish it. I love music but I won't tell you what my favorite band is because I'm gatekeeping :' I love computer games and my favorite one is PUBG PC but it pisses me off because it's too dificult. One of my favorite companies is NOTHING because they made my phone. <a href="moon.jpg">Heres a picture of blood moon.</a> </span></p></td>
+            </tr>
+          </table></td>
+          <td width="250" height="636"><div id="Layer1">
+            <iframe src="https://fuljhadi.ishoutbox.com/" width="275" height="570" frameborder="0" valign="middle" allowtransparency="true">
+            <div id="Layer3"></div>
+            </iframe>
+          </div></td>
+        </tr>
+        <tr>
+          <td height="149"><a href="https://www.geocities.ws/fourteen20/index-2.html"><img src="construction.gif" width="250" height="147" border="0" align="top"></a></td>
+        </tr>
+      </table>
+    </div>
+    <a href="https://web.archive.org/web/20091026171849/http://uk.geocities.com/livedownload247/freeplaystationportabledownload.html"><img src="pspbanner.gif" width="468" height="60" border="0"></a> <a href="https://www.tshirthell.com"><img src="tbanner53.gif" width="468" height="60" border="0"></a>
+
+<!-- Footer Scrolling Display -->
+<div id="footer" style="background-color:black; padding:5px 0;">
+  <marquee scrollamount="10" onmouseover="this.stop();" onmouseout="this.start();">
+    <img src="p1/computer.gif" style="height:31px;" alt="Computer">
+    
+    <img src="p1/censor.gif" style="height:31px;" alt="Censor">
+    <img src="p1/under-construction.gif" style="height:31px;" alt="Under Construction">
+    <img src="p1/thiswebsiteisgay.gif" style="height:31px;" alt="This Website Is Gay">
+    <img src="p1/thiswebsitesucks.gif" style="height:31px;" alt="This Website Sucks">
+    <img src="p1/thissiteismikuapproved.gif" style="height:31px;" alt="Miku Approved">
+    <img src="p1/myowntwopaws.png" style="height:31px;" alt="My Own Two Paws">
+    <img src="p1/gothtml.gif" style="height:31px;" alt="GothML">
+    <img src="p1/www.gif" style="height:31px;" alt="WWW">
+    <img src="p1/mobile-unfriendly.gif" style="height:31px;" alt="Mobile Unfriendly">
+    <img src="p1/bestviewedwitheyes.gif" style="height:31px;" alt="Best Viewed With Eyes">
+    
+    <img src="p1/graphicdesign.png" style="height:31px;" alt="Graphic Design">
+    <img src="p1/guestbook.gif" style="height:31px;" alt="Guestbook">
+    <img src="p1/email.gif" style="height:31px;" alt="Email">
+    <img src="p1/computer.gif" style="height:31px;" alt="PSP Banner">
+
+  </marquee>
+</div>
+
+
+
+
+
+
+  </body>
+</html>

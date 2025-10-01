@@ -1,0 +1,31 @@
+.unnamed1 {
+	display: block;
+}
+.unnamed2 {
+	background-color: #333333;
+}
+.unnamed3 {
+	background-color: #666666;
+	vertical-align: baseline;
+	float: none;
+	padding: 5px;
+	line-height: 20px;
+}
+.floatright {
+	float: right;
+}
+.floatleft {
+	float: left;
+}
+.scrollable {
+	font-size: 18px;
+	background-color: #666666;
+	overflow: scroll;
+}
+.shoutbox {
+	float: right;
+	position: absolute;
+}
+.SHOUT {
+	background-color: #ff0303;
+}
